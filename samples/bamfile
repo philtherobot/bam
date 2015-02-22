@@ -1,0 +1,10 @@
+
+import bam.node as _node
+import bam.cpp as _cpp
+
+project = _node.Project()
+
+exe = _cpp.Executable('hello')
+exe.add(['hello.cpp'])
+
+project.add(exe)
