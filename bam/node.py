@@ -3,27 +3,15 @@ class Node(object):
     def __init__(self, name):
         self.name = name
         self.children = []
-
-    """
-    def add(self, seq):
-        if isinstance(seq, basestring):
-            self._add_source(seq)
-        else:
-            try:
-                for s in seq:
-                    self.add(s)
-            except TypeError:
-                self.children.append(seq)
-    """
     
+    def is_outdated(self):
+        return False
+
     def build(self):
-        for c in self.children:
-            c.build()
+        pass
 
     def explode(self):
         pass
-        for c in self.children:
-            c.explode()
 
 
 class Project(Node):
@@ -35,3 +23,11 @@ class Project(Node):
             self.children += seq
         except TypeError:
             self.children.append(seq)
+
+
+class FileNode(Node):
+    def __init__(self, name):
+        super(FileNode, self).__init__(name)
+
+    def is_outdated(self):
+        return False
